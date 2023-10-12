@@ -26,7 +26,7 @@
     // 配置菜单的图标，默认使用 antd 的 icon 名，默认不适用二级菜单的 icon。
     icon: 'crown',
     // 权限配置，需要预先配置权限
-    access: 'canAdmin',
+    // access: 'canAdmin',
     routes: [
       {
         path: '/admin/sub-page',
