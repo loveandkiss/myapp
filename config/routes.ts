@@ -32,7 +32,7 @@
         path: '/admin/sub-page',
         name: 'sub-page',
         icon: 'smile',
-        component: './Welcome',
+        component: './Admin',
       },
       {
         component: './404',

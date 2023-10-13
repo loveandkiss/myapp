@@ -271,3 +271,34 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
 ```
 
 layout 支持一个 function，可以与 initialState 结合使用，将动态数据放入 initialState 中每次 initialState 变化都会触发更新。
+
+## ProComponents
+
+ProComponents 是基于 Ant Design 而开发的模板组件，提供了更高级别的抽象支持，开箱即用。可以显著的提升制作 CRUD 页面的效率，更加专注于页面。
+
+安装
+
+```shell
+
+$ npm i @ant-design/pro-components --save
+
+```
+
+在项目中使用
+
+```js
+import React from 'react';
+import { ProForm, ProFormText } from '@ant-design/pro-components';
+
+export default () => {
+  return (
+    <ProForm
+      onFinish={async (values) => {
+        console.log(values);
+      }}
+    >
+      <ProFormText name="name" label="姓名" />
+    </ProForm>
+  );
+};
+```

@@ -1,4 +1,7 @@
+// icons
 import { HeartTwoTone, SmileTwoTone } from '@ant-design/icons';
+
+// PageHeaderWrapper组件 同 PageContainer组件
 import { PageHeaderWrapper } from '@ant-design/pro-components';
 import { Alert, Card, Typography } from 'antd';
 import React from 'react';
@@ -8,6 +11,7 @@ const Admin: React.FC = () => {
   const intl = useIntl();
   return (
     <PageHeaderWrapper
+      ghost
       content={intl.formatMessage({
         id: 'pages.admin.subPage.title',
         defaultMessage: 'This page can only be viewed by admin',

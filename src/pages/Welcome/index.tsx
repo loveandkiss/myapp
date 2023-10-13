@@ -1,9 +1,13 @@
 import { PageContainer } from '@ant-design/pro-components';
-import { Alert, Card, Typography } from 'antd';
-import React from 'react';
+// UI组件
+import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { Alert, Card, Typography, Button, Dropdown } from 'antd';
+import React, { useState } from 'react';
+// 国际化
 import { FormattedMessage, useIntl } from 'umi';
-import styles from './Welcome.less';
+import styles from './index.less';
 
+// 组件
 const CodePreview: React.FC = ({ children }) => (
   <pre className={styles.pre}>
     <code>
@@ -12,12 +16,28 @@ const CodePreview: React.FC = ({ children }) => (
   </pre>
 );
 
+// 组件
 const Welcome: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 2000);
+  // 获取 intl 对象
   const intl = useIntl();
 
   return (
-    <PageContainer>
-      <Card>
+    <PageContainer ghost>
+      <Card
+        title="Default size card"
+        hoverable
+        loading={loading}
+        actions={[
+          <SettingOutlined key="setting" />,
+          <EditOutlined key="edit" />,
+          <EllipsisOutlined key="ellipsis" />,
+        ]}
+      >
         <Alert
           message={intl.formatMessage({
             id: 'pages.welcome.alertMessage',
