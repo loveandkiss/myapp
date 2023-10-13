@@ -97,12 +97,12 @@ declare namespace API {
     key?: number;
     disabled?: boolean;
     href?: string;
-    avatar?: string;
-    name?: string;
+    avatar?: string; // 头像
+    name?: string; // 名称
     owner?: string;
-    desc?: string;
-    callNo?: number;
-    status?: number;
+    desc?: string; // 描述
+    callNo?: number; // 服务调用次数
+    status?: number; // 状态
     updatedAt?: string;
     createdAt?: string;
     progress?: number;

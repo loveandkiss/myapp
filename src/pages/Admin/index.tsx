@@ -6,6 +6,9 @@ import { PageHeaderWrapper } from '@ant-design/pro-components';
 import { Alert, Card, Typography } from 'antd';
 import React from 'react';
 import { useIntl } from 'umi';
+// 样式模块化
+import styles from './index.less';
+console.log('styles', styles);
 
 const Admin: React.FC = () => {
   const intl = useIntl();

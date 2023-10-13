@@ -1,6 +1,9 @@
-import { addRule, removeRule, rule, updateRule } from '@/services/ant-design-pro/api';
+// api
+import { addRule, removeRule, getRule, updateRule } from '@/services/ant-design-pro/rule';
+// icons
 import { PlusOutlined } from '@ant-design/icons';
 import type { ActionType, ProColumns, ProDescriptionsItemProps } from '@ant-design/pro-components';
+// 高度封装的UI组件
 import {
   FooterToolbar,
   ModalForm,
@@ -10,8 +13,11 @@ import {
   ProFormTextArea,
   ProTable,
 } from '@ant-design/pro-components';
+// 基础UI组件
 import { Button, Drawer, Input, message } from 'antd';
+// React
 import React, { useRef, useState } from 'react';
+// 国际化
 import { FormattedMessage, useIntl } from 'umi';
 import type { FormValueType } from './components/UpdateForm';
 import UpdateForm from './components/UpdateForm';
@@ -105,6 +111,7 @@ const TableList: React.FC = () => {
    * @en-US International configuration
    * @zh-CN 国际化配置
    * */
+  // 获取 intl 对象
   const intl = useIntl();
 
   const columns: ProColumns<API.RuleListItem>[] = [
@@ -264,14 +271,16 @@ const TableList: React.FC = () => {
             <PlusOutlined /> <FormattedMessage id="pages.searchTable.new" defaultMessage="New" />
           </Button>,
         ]}
-        request={rule}
+        request={getRule}
         columns={columns}
         rowSelection={{
           onChange: (_, selectedRows) => {
+            console.log('selectedRows', selectedRows);
             setSelectedRows(selectedRows);
           },
         }}
       />
+
       {selectedRowsState?.length > 0 && (
         <FooterToolbar
           extra={
