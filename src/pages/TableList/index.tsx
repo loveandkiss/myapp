@@ -91,6 +91,7 @@ const handleRemove = async (selectedRows: API.RuleListItem[]) => {
 
 const TableList: React.FC = () => {
   /**
+   * 是否展示
    * @en-US Pop-up window of new window
    * @zh-CN 新建窗口的弹窗
    *  */
@@ -101,9 +102,12 @@ const TableList: React.FC = () => {
    * */
   const [updateModalVisible, handleUpdateModalVisible] = useState<boolean>(false);
 
+  // 是否展示详情
   const [showDetail, setShowDetail] = useState<boolean>(false);
 
+  // Table action 的引用，便于自定义触发
   const actionRef = useRef<ActionType>();
+
   const [currentRow, setCurrentRow] = useState<API.RuleListItem>();
   const [selectedRowsState, setSelectedRows] = useState<API.RuleListItem[]>([]);
 
@@ -125,9 +129,12 @@ const TableList: React.FC = () => {
       dataIndex: 'name',
       tip: 'The rule name is the unique key',
       render: (dom, entity) => {
+        // console.log('render-dom', dom);
+        // console.log('render-entity', entity);
         return (
           <a
             onClick={() => {
+              // 设置当前行
               setCurrentRow(entity);
               setShowDetail(true);
             }}
@@ -142,6 +149,7 @@ const TableList: React.FC = () => {
       dataIndex: 'desc',
       valueType: 'textarea',
     },
+    // 服务调用次数
     {
       title: (
         <FormattedMessage
@@ -158,6 +166,7 @@ const TableList: React.FC = () => {
           defaultMessage: ' 万 ',
         })}`,
     },
+    // 状态
     {
       title: <FormattedMessage id="pages.searchTable.titleStatus" defaultMessage="Status" />,
       dataIndex: 'status',
@@ -195,6 +204,7 @@ const TableList: React.FC = () => {
         },
       },
     },
+    // 上次调度时间
     {
       title: (
         <FormattedMessage
@@ -204,8 +214,10 @@ const TableList: React.FC = () => {
       ),
       sorter: true,
       dataIndex: 'updatedAt',
+      // 值的类型,会生成不同的渲染器
       valueType: 'dateTime',
       renderFormItem: (item, { defaultRender, ...rest }, form) => {
+        // console.log('rest', rest)
         const status = form.getFieldValue('status');
         if (`${status}` === '0') {
           return false;
@@ -320,6 +332,8 @@ const TableList: React.FC = () => {
           </Button>
         </FooterToolbar>
       )}
+
+      {/* 新建规则 弹窗 */}
       <ModalForm
         title={intl.formatMessage({
           id: 'pages.searchTable.createForm.newRule',
@@ -355,6 +369,8 @@ const TableList: React.FC = () => {
         />
         <ProFormTextArea width="md" name="desc" />
       </ModalForm>
+
+      {/*  */}
       <UpdateForm
         onSubmit={async (value) => {
           const success = await handleUpdate(value);
@@ -377,7 +393,7 @@ const TableList: React.FC = () => {
       />
 
       <Drawer
-        width={600}
+        width={700}
         visible={showDetail}
         onClose={() => {
           setCurrentRow(undefined);

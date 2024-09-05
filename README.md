@@ -56,9 +56,17 @@ npm test
 
 You can view full document on our [official website](https://pro.ant.design). And welcome any feedback in our [github](https://github.com/ant-design/ant-design-pro).
 
-## umi
+
+
+## umi 【使用参考官方文档】
 
 版本为 umi@3，即 3 版本
+
+https://v3.umijs.org/zh-CN/docs/runtime-config
+
+
+
+
 
 ## 国际化
 
@@ -205,7 +213,13 @@ export default function Page() {
 
 ## Ant Design Pro 配置
 
-- 运行时配置
+- 运行时配置【https://v3.umijs.org/zh-CN/docs/runtime-config】
+
+运行时配置和配置的区别是他跑在浏览器端，基于此，我们可以在这里写函数、jsx、import 浏览器端依赖等等，注意不要引入 node 依赖。
+
+
+约定 src/app.tsx 为运行时配置。
+
 
 在构建时是无法使用 dom 的，所以有些配置可能需要运行时来配置，一般而言我们都是在 src/app.tsx 中管理运行时配置。
 
@@ -302,3 +316,110 @@ export default () => {
   );
 };
 ```
+
+- ProDescriptions
+
+
+
+
+
+###  husky 
+版本 7.0.4
+husky 是一个用于简化Git钩子（hooks）的设置的工具，允许开发者轻松地在各种Git事件触发时运行脚本。例如，在提交之前（pre-commit）、推送之前（pre-push）、或者在提交信息被写入后（commit-msg）等。
+
+husky的使用可以提高项目团队的工作效率，确保代码库中的代码符合特定的质量标准。它通常与lint-staged一起使用，以在提交前自动执行代码的静态检查。
+
+
+### lint-staged
+
+lint-staged 是一个在提交代码之前运行linter或其他工具的工具。这意味着当开发人员尝试提交代码到版本控制系统（如git）时，lint-staged 会只对暂存区（staged files）的文件运行配置的命令，这通常是代码风格检查器（如ESLint、Prettier）、代码格式化工具或测试套件。
+
+
+
+### umi-fabric[https://github.com/umijs/fabric]
+
+
+一个包含 prettier，eslint，stylelint 的配置文件合集
+
+```bash
+
+npm i @umijs/fabric --save-dev
+yarn add @umijs/fabric -D
+
+
+```
+
+
+in .eslintrc.js
+
+
+```js
+
+module.exports = {
+  extends: [require.resolve('@umijs/fabric/dist/eslint')],
+
+  // in antd-design-pro
+  globals: {
+    ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION: true,
+    page: true,
+  },
+
+  rules: {
+    // your rules
+  },
+};
+
+```
+
+
+in .stylelintrc.js
+
+
+```js
+
+module.exports = {
+  extends: [require.resolve('@umijs/fabric/dist/stylelint')],
+  rules: {
+    // your rules
+  },
+};
+
+
+
+```
+
+in .prettierrc.js
+
+```js
+
+const fabric = require('@umijs/fabric');
+
+module.exports = {
+  ...fabric.prettier,
+};
+
+
+```
+
+
+## Node 版本 和 NPM 版本
+
+Node版本 => v16.2.0
+NPM版本  => 7.13.0
+
+
+## 本系统为一个后台管理系统
+
+
+
+
+
+
+
+
+
+
+
+
+
+

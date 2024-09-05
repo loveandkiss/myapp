@@ -1,10 +1,13 @@
 import { outLogin } from '@/services/ant-design-pro/login';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+// UI组件
 import { Avatar, Menu, Spin } from 'antd';
 import type { ItemType } from 'antd/lib/menu/hooks/useItems';
 import { stringify } from 'querystring';
 import type { MenuInfo } from 'rc-menu/lib/interface';
+// React
 import React, { useCallback } from 'react';
+// Umi
 import { history, useModel } from 'umi';
 import HeaderDropdown from '../HeaderDropdown';
 import styles from './index.less';
@@ -31,11 +34,15 @@ const loginOut = async () => {
   }
 };
 
+// 组件
 const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
+  // 消费
   const { initialState, setInitialState } = useModel('@@initialState');
 
+  // useCallback
   const onMenuClick = useCallback(
     (event: MenuInfo) => {
+      // console.log('menu===event', event);
       const { key } = event;
       if (key === 'logout') {
         setInitialState((s) => ({ ...s, currentUser: undefined }));

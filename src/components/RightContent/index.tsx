@@ -1,6 +1,7 @@
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { Space } from 'antd';
 import React from 'react';
+// 选择语言
 import { SelectLang, useModel } from 'umi';
 import HeaderSearch from '../HeaderSearch';
 import Avatar from './AvatarDropdown';
@@ -21,6 +22,7 @@ const GlobalHeaderRight: React.FC = () => {
   if ((navTheme === 'dark' && layout === 'top') || layout === 'mix') {
     className = `${styles.right}  ${styles.dark}`;
   }
+
   return (
     <Space className={className}>
       <HeaderSearch
@@ -28,7 +30,10 @@ const GlobalHeaderRight: React.FC = () => {
         placeholder="站内搜索"
         defaultValue="umi ui"
         options={[
-          { label: <a href="https://umijs.org/zh/guide/umi-ui.html">umi ui</a>, value: 'umi ui' },
+          {
+            label: <a href="https://umijs.org/zh/guide/umi-ui.html">umi ui</a>,
+            value: 'umi ui',
+          },
           {
             label: <a href="next.ant.design">Ant Design</a>,
             value: 'Ant Design',
@@ -42,19 +47,22 @@ const GlobalHeaderRight: React.FC = () => {
             value: 'Pro Layout',
           },
         ]}
-        // onSearch={value => {
-        //   console.log('input', value);
-        // }}
+        onSearch={(value) => {
+          console.log('input', value);
+        }}
       />
       <span
         className={styles.action}
         onClick={() => {
-          window.open('https://pro.ant.design/docs/getting-started');
+          console.log('you are clicking me');
+          // window.open('https://pro.ant.design/docs/getting-started');
         }}
       >
         <QuestionCircleOutlined />
       </span>
-      <Avatar />
+      {/* 头像 */}
+      <Avatar menu />
+      {/* 国际化 */}
       <SelectLang className={styles.action} />
     </Space>
   );

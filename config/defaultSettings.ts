@@ -5,6 +5,7 @@ const Settings: LayoutSettings & {
   logo?: string;
 } = {
   // 设置标题的 title
+  // 显示在布局左上角的产品名，默认值为包名。
   title: 'Ant Design Pro',
   // 修改左上角的 logo
   logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',

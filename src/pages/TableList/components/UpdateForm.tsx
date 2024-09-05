@@ -1,3 +1,4 @@
+// 高阶组件
 import {
   ProFormDateTimePicker,
   ProFormRadio,
@@ -6,6 +7,8 @@ import {
   ProFormTextArea,
   StepsForm,
 } from '@ant-design/pro-components';
+
+// 弹窗
 import { Modal } from 'antd';
 import React from 'react';
 import { FormattedMessage, useIntl } from 'umi';
@@ -18,14 +21,20 @@ export type FormValueType = {
   frequency?: string;
 } & Partial<API.RuleListItem>;
 
+// 规范传入的字段类型
 export type UpdateFormProps = {
-  onCancel: (flag?: boolean, formVals?: FormValueType) => void;
-  onSubmit: (values: FormValueType) => Promise<void>;
-  updateModalVisible: boolean;
-  values: Partial<API.RuleListItem>;
+  onCancel: (flag?: boolean, formVals?: FormValueType) => void; // 取消
+  onSubmit: (values: FormValueType) => Promise<void>; // 提交
+  updateModalVisible: boolean; // 是否展示
+  values: Partial<API.RuleListItem>; // 值
 };
 
 const UpdateForm: React.FC<UpdateFormProps> = (props) => {
+  // props.children
+  // props.onCancel
+  // props.onSubmit
+
+  // 获取 intl 对象
   const intl = useIntl();
   return (
     <StepsForm
@@ -33,9 +42,10 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
         size: 'small',
       }}
       stepsFormRender={(dom, submitter) => {
+        console.log('dom', dom);
         return (
           <Modal
-            width={640}
+            width={880}
             bodyStyle={{ padding: '32px 40px 48px' }}
             destroyOnClose
             title={intl.formatMessage({

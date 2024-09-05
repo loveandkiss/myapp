@@ -4,4 +4,7 @@
 # Export Git hook params
 export GIT_PARAMS=$*
 
+# 总的来说，这个脚本片段的主要作用是在Git钩子被触发时，使用husky的配置和设置，并运行一个名为fabric verify-commit的命令来验证Git提交的内容。
+# 这通常用于确保提交的代码符合项目的代码风格、质量要求和其他规范。
+# fabric 是命令行工具 可执行
 npx --no-install fabric verify-commit

@@ -1,15 +1,18 @@
 // https://umijs.org/config/
 import { defineConfig } from 'umi';
 import { join } from 'path';
-
+// 设置
 import defaultSettings from './defaultSettings';
+// 代理
 import proxy from './proxy';
+// 路由
 import routes from './routes';
 
+// 环境变量
 const { REACT_APP_ENV } = process.env;
 
-console.log('REACT_APP_ENV', REACT_APP_ENV);
-
+// 为了进一步降低研发成本，我们将布局通过 Umi 插件的方式内置，只需通过简单的配置即可拥有 Ant Design 的 Layout（ProLayout），包括导航以及侧边栏。
+// 从而做到用户无需关心布局。
 export default defineConfig({
   // 这个选项启用了文件名的哈希值，通常用于解决浏览器缓存问题，确保文件更新后浏览器能够获取新版本。
   hash: true,
@@ -25,7 +28,7 @@ export default defineConfig({
     siderWidth: 208,
     ...defaultSettings,
   },
-  // 配置国际化插件
+  // 配置国际化插件 => 是否开始国际化配置。
   // https://umijs.org/zh-CN/plugins/plugin-locale
   locale: {
     // 默认使用 src/locales/zh-CN.ts 作为多语言文件
